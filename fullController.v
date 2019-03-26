@@ -22,9 +22,8 @@ module fullController(
 	output reg [6:0]	y_out;
 
     // gameControllerWires
-    wire enable_gc;
-    wire draw_homescreen;
-    wire draw_gameover;
+    wire enable_gc, draw_homescreen, draw_gameover;
+    wire homescreen_drawn, gameover_drawn;
     
     wire [1:0]  select_data;
 
@@ -40,12 +39,24 @@ module fullController(
 
     // Instantiate drawHomescreen
     drawHomescreen dhs0(
-
+        .clk(clk),
+        .resetn(resetn),
+        .enable(draw_homescreen),
+        .col_out(col_hs),
+        .x_out(x_hs),
+        .y_out(y_hs),
+        .comlepted(homescreen_drawn)
     );
 
     // Instantiate drawGameover
     drawGameover dgo(
-
+        .clk(clk),
+        .resetn(resetn),
+        .enable(draw_gameover),
+        .col_out(col_go),
+        .x_out(x_go),
+        .y_out(y_go),
+        .comlepted(gameover_drawn)
     );
 
     // Instantiate control path
