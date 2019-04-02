@@ -1,4 +1,4 @@
-module drawGameover(
+module drawBackground(
     // Inputs
 	clk,
 	resetn,
@@ -58,7 +58,7 @@ module drawGameover(
     end
 
     // Image Memory
-    gameover g0(
+    background b0(
         .address(counter),
         .clock(clk),
         .q(col)
