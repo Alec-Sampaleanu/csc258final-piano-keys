@@ -7,6 +7,7 @@ module drawGameover(
     col_out,
 	x_out,
 	y_out,
+    plot_go,
     completed
 );
 
@@ -18,6 +19,7 @@ module drawGameover(
     output reg [2:0]    col_out;
     output reg [7:0]    x_out;
     output reg [6:0]    y_out;
+    output reg          plot_go;
     output reg          completed;
 
 	// Counter register
@@ -45,8 +47,11 @@ module drawGameover(
         if (!resetn || !enable) begin
             completed <= 0;
             counter <= 15'd0;
+            plot_go <= 0;
         end
         else begin
+            plot_go <= 1;
+            
             if (counter < 15'd32767) begin
                 counter <= counter + 1;
             end
